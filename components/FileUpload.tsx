@@ -69,23 +69,23 @@ const FileUpload: React.FC<FileUploadProps> = ({ onDataLoaded }) => {
       <div 
         className={`relative group border-3 border-dashed rounded-2xl p-12 text-center transition-all duration-300 ease-out cursor-pointer overflow-hidden ${
           isDragging 
-            ? 'border-blue-500 bg-blue-50/50 scale-[1.02]' 
-            : 'border-gray-200 hover:border-blue-300 bg-white hover:bg-gray-50'
+            ? 'border-blue-500 bg-blue-50/50 dark:bg-blue-900/20 scale-[1.02]' 
+            : 'border-gray-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-500 bg-white dark:bg-slate-800 hover:bg-gray-50 dark:hover:bg-slate-750'
         }`}
         onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
         onDragLeave={() => setIsDragging(false)}
         onDrop={handleDrop}
         onClick={() => document.getElementById('file-upload')?.click()}
       >
-        <div className={`absolute inset-0 bg-blue-500/5 transition-opacity duration-500 ${isDragging ? 'opacity-100' : 'opacity-0'}`}></div>
+        <div className={`absolute inset-0 bg-blue-500/5 dark:bg-blue-400/5 transition-opacity duration-500 ${isDragging ? 'opacity-100' : 'opacity-0'}`}></div>
         
         <div className="relative z-10 flex flex-col items-center justify-center space-y-5">
-          <div className={`p-5 rounded-full transition-all duration-300 ${isDragging ? 'bg-blue-200 text-blue-700 scale-110' : 'bg-blue-50 text-blue-600 group-hover:bg-blue-100 group-hover:scale-110'}`}>
+          <div className={`p-5 rounded-full transition-all duration-300 ${isDragging ? 'bg-blue-200 text-blue-700 dark:bg-blue-800 dark:text-blue-200 scale-110' : 'bg-blue-50 text-blue-600 dark:bg-slate-700 dark:text-blue-400 group-hover:bg-blue-100 dark:group-hover:bg-slate-600 group-hover:scale-110'}`}>
             <Upload className="w-8 h-8" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors">Upload Candidate List</h3>
-            <p className="text-gray-500 mt-2 text-sm font-medium">Drag & drop CSV or Excel file here</p>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">Upload Candidate List</h3>
+            <p className="text-gray-500 dark:text-slate-400 mt-2 text-sm font-medium">Drag & drop CSV or Excel file here</p>
           </div>
           
           <input 
@@ -97,7 +97,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onDataLoaded }) => {
           />
           
           <div className="pt-2">
-            <span className="px-5 py-2.5 bg-gray-900 text-white rounded-lg group-hover:bg-blue-600 transition-colors font-medium text-sm shadow-lg shadow-gray-200 group-hover:shadow-blue-200">
+            <span className="px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-slate-900 rounded-lg group-hover:bg-blue-600 dark:group-hover:bg-blue-400 group-hover:text-white transition-colors font-medium text-sm shadow-lg shadow-gray-200 dark:shadow-none">
                 Browse Files
             </span>
           </div>
@@ -105,27 +105,27 @@ const FileUpload: React.FC<FileUploadProps> = ({ onDataLoaded }) => {
       </div>
 
       {error && (
-        <div className="mt-6 p-4 bg-red-50 text-red-700 rounded-xl flex items-start space-x-3 border border-red-100 animate-fade-in-up">
+        <div className="mt-6 p-4 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-200 rounded-xl flex items-start space-x-3 border border-red-100 dark:border-red-800 animate-fade-in-up">
           <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
           <span className="text-sm font-medium">{error}</span>
         </div>
       )}
 
-      <div className="mt-8 bg-white/60 backdrop-blur-sm p-6 rounded-xl border border-gray-200/50 shadow-sm flex items-start space-x-4">
-        <div className="bg-gray-100 p-2 rounded-lg">
-             <FileSpreadsheet className="w-6 h-6 text-gray-500" />
+      <div className="mt-8 bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm p-6 rounded-xl border border-gray-200/50 dark:border-slate-700/50 shadow-sm flex items-start space-x-4">
+        <div className="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
+             <FileSpreadsheet className="w-6 h-6 text-gray-500 dark:text-slate-300" />
         </div>
-        <div className="text-sm text-gray-600 flex-1">
-          <p className="font-bold text-gray-900 mb-1">Format Requirements</p>
+        <div className="text-sm text-gray-600 dark:text-slate-300 flex-1">
+          <p className="font-bold text-gray-900 dark:text-white mb-1">Format Requirements</p>
           <p className="mb-3 leading-relaxed">Your file must have headers. Our AI will automatically detect the <strong>Name</strong> and <strong>Phone</strong> columns.</p>
-          <div className="p-3 bg-white border border-gray-200 rounded-lg text-xs font-mono text-gray-500 shadow-sm overflow-x-auto whitespace-nowrap">
+          <div className="p-3 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-lg text-xs font-mono text-gray-500 dark:text-slate-400 shadow-sm overflow-x-auto whitespace-nowrap">
             <div className="flex space-x-8">
                 <div>
-                    <span className="text-gray-300"># Row 1</span><br/>
-                    <span className="text-gray-900 font-bold">Candidate Name</span>, <span className="text-gray-900 font-bold">Phone</span>, Role
+                    <span className="text-gray-300 dark:text-slate-600"># Row 1</span><br/>
+                    <span className="text-gray-900 dark:text-slate-200 font-bold">Candidate Name</span>, <span className="text-gray-900 dark:text-slate-200 font-bold">Phone</span>, Role
                 </div>
                 <div className="opacity-50">
-                    <span className="text-gray-300"># Row 2</span><br/>
+                    <span className="text-gray-300 dark:text-slate-600"># Row 2</span><br/>
                     John Doe, +15550123, Sales
                 </div>
             </div>

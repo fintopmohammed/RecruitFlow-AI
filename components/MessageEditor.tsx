@@ -54,9 +54,9 @@ ${template.outro}
     <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
       {/* Editor Side */}
       <div className="space-y-6 order-2 lg:order-1 animate-fade-in-up">
-        <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-gray-200 dark:border-slate-700 shadow-sm">
             <div className="flex justify-between items-center mb-4">
-                <h3 className="font-bold text-gray-800 flex items-center">
+                <h3 className="font-bold text-gray-800 dark:text-white flex items-center">
                     <span className="w-1 h-6 bg-blue-600 rounded-full mr-2"></span>
                     Intro Message
                 </h3>
@@ -64,14 +64,14 @@ ${template.outro}
                     <button 
                         onClick={() => handleRefine('professional')}
                         disabled={isRefining}
-                        className="text-xs font-medium bg-purple-50 text-purple-700 px-3 py-1.5 rounded-full border border-purple-100 hover:bg-purple-100 transition-colors flex items-center disabled:opacity-50"
+                        className="text-xs font-medium bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-3 py-1.5 rounded-full border border-purple-100 dark:border-purple-800 hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-colors flex items-center disabled:opacity-50"
                     >
                         <Wand2 className="w-3 h-3 mr-1.5" /> Professional
                     </button>
                     <button 
                         onClick={() => handleRefine('friendly')}
                         disabled={isRefining}
-                        className="text-xs font-medium bg-pink-50 text-pink-700 px-3 py-1.5 rounded-full border border-pink-100 hover:bg-pink-100 transition-colors flex items-center disabled:opacity-50"
+                        className="text-xs font-medium bg-pink-50 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 px-3 py-1.5 rounded-full border border-pink-100 dark:border-pink-800 hover:bg-pink-100 dark:hover:bg-pink-900/50 transition-colors flex items-center disabled:opacity-50"
                     >
                         <Wand2 className="w-3 h-3 mr-1.5" /> Friendly
                     </button>
@@ -81,7 +81,11 @@ ${template.outro}
                 <textarea
                     value={template.intro}
                     onChange={(e) => setTemplate(prev => ({ ...prev, intro: e.target.value }))}
-                    className={`w-full p-4 border rounded-xl text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all resize-y min-h-[100px] ${isRefining ? 'bg-gray-50 text-gray-400' : 'bg-white border-gray-200'}`}
+                    className={`w-full p-4 border rounded-xl text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all resize-y min-h-[100px] ${
+                        isRefining 
+                        ? 'bg-gray-50 dark:bg-slate-700 text-gray-400 dark:text-slate-500' 
+                        : 'bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-700 text-gray-900 dark:text-white'
+                    }`}
                     disabled={isRefining}
                 />
                 {isRefining && (
@@ -90,27 +94,27 @@ ${template.outro}
                     </div>
                 )}
             </div>
-            <p className="text-xs text-gray-400 mt-2 font-medium">Tip: Use <code>{'{{name}}'}</code> variable for personalization.</p>
+            <p className="text-xs text-gray-400 dark:text-slate-500 mt-2 font-medium">Tip: Use <code>{'{{name}}'}</code> variable for personalization.</p>
         </div>
 
-        <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-            <h3 className="font-bold text-gray-800 mb-4 flex items-center">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-gray-200 dark:border-slate-700 shadow-sm">
+            <h3 className="font-bold text-gray-800 dark:text-white mb-4 flex items-center">
                  <span className="w-1 h-6 bg-green-500 rounded-full mr-2"></span>
                  Screening Questions
             </h3>
             <div className="space-y-3">
                 {template.questions.map((q, idx) => (
                     <div key={idx} className="flex items-center space-x-2 group">
-                        <span className="text-gray-300 font-bold text-xs w-4">{idx + 1}</span>
+                        <span className="text-gray-300 dark:text-slate-600 font-bold text-xs w-4">{idx + 1}</span>
                         <input
                             type="text"
                             value={q}
                             onChange={(e) => updateQuestion(idx, e.target.value)}
-                            className="flex-1 p-2.5 bg-gray-50 border border-transparent hover:bg-white hover:border-gray-200 focus:bg-white focus:border-blue-500 rounded-lg text-sm transition-all outline-none"
+                            className="flex-1 p-2.5 bg-gray-50 dark:bg-slate-900 border border-transparent hover:bg-white dark:hover:bg-slate-950 hover:border-gray-200 dark:hover:border-slate-600 focus:bg-white dark:focus:bg-slate-950 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg text-sm text-gray-900 dark:text-white transition-all outline-none"
                         />
                         <button 
                             onClick={() => removeQuestion(idx)}
-                            className="text-gray-300 hover:text-red-500 p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="text-gray-300 dark:text-slate-600 hover:text-red-500 dark:hover:text-red-400 p-2 opacity-0 group-hover:opacity-100 transition-opacity"
                         >
                             &times;
                         </button>
@@ -119,21 +123,21 @@ ${template.outro}
             </div>
             <button 
                 onClick={addQuestion}
-                className="mt-5 w-full py-2 border-2 border-dashed border-gray-200 rounded-lg text-sm text-gray-500 hover:text-blue-600 hover:border-blue-300 hover:bg-blue-50 transition-all font-medium flex items-center justify-center"
+                className="mt-5 w-full py-2 border-2 border-dashed border-gray-200 dark:border-slate-700 rounded-lg text-sm text-gray-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-300 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-slate-700 transition-all font-medium flex items-center justify-center"
             >
                 <Plus className="w-4 h-4 mr-1" /> Add Question
             </button>
         </div>
 
-        <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-             <h3 className="font-bold text-gray-800 mb-4 flex items-center">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-gray-200 dark:border-slate-700 shadow-sm">
+             <h3 className="font-bold text-gray-800 dark:text-white mb-4 flex items-center">
                 <span className="w-1 h-6 bg-orange-500 rounded-full mr-2"></span>
                 Closing
              </h3>
              <textarea
                 value={template.outro}
                 onChange={(e) => setTemplate(prev => ({ ...prev, outro: e.target.value }))}
-                className="w-full p-4 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all"
+                className="w-full p-4 border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white rounded-xl text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all"
                 rows={2}
             />
         </div>
@@ -141,13 +145,13 @@ ${template.outro}
         <div className="flex justify-between pt-6">
             <button 
                 onClick={onBack}
-                className="px-8 py-3 text-gray-600 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 hover:text-gray-900 font-semibold transition-all active:scale-95"
+                className="px-8 py-3 text-gray-600 dark:text-slate-300 bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-700 hover:text-gray-900 dark:hover:text-white font-semibold transition-all active:scale-95"
             >
                 Back
             </button>
             <button 
                 onClick={onNext}
-                className="px-8 py-3 text-white bg-blue-600 rounded-xl hover:bg-blue-700 font-semibold shadow-lg shadow-blue-200 transition-all hover:-translate-y-0.5 active:translate-y-0 active:scale-95 flex items-center"
+                className="px-8 py-3 text-white bg-blue-600 rounded-xl hover:bg-blue-700 font-semibold shadow-lg shadow-blue-200 dark:shadow-none transition-all hover:-translate-y-0.5 active:translate-y-0 active:scale-95 flex items-center"
             >
                 Start Sending <SendIcon className="w-4 h-4 ml-2" />
             </button>
@@ -223,13 +227,13 @@ ${template.outro}
          </div>
          
          <div className="text-center mt-8">
-             <div className="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
-                 <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Previewing:</span>
+             <div className="inline-flex items-center space-x-2 bg-white dark:bg-slate-800 px-4 py-2 rounded-full border border-gray-200 dark:border-slate-700 shadow-sm">
+                 <span className="text-xs font-semibold text-gray-400 dark:text-slate-500 uppercase tracking-wider">Previewing:</span>
                  <input 
                     type="text" 
                     value={previewName} 
                     onChange={(e) => setPreviewName(e.target.value)}
-                    className="border-none bg-transparent text-sm font-medium text-gray-900 focus:ring-0 p-0 w-32 text-center"
+                    className="border-none bg-transparent text-sm font-medium text-gray-900 dark:text-white focus:ring-0 p-0 w-32 text-center"
                  />
              </div>
          </div>
