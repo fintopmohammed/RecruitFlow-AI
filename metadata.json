@@ -1,0 +1,5 @@
+{
+  "name": "RecruitFlow AI",
+  "description": "Automated WhatsApp screening tool for Talent Acquisition. Upload CSV or Excel files, map contacts using AI, and streamline outreach with pre-filled screening templates.",
+  "requestFramePermissions": []
+}
